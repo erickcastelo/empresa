@@ -22,11 +22,19 @@ class EmpresaController extends Controller
     {
         $model = new Empresa();
 
-        if($model->load(Yii::$app->request->post())){
+
+        if(Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())) {
             Yii::$app->response->format = Response::FORMAT_JSON;
 
-            return 'ola';
+            return ActiveForm::validate($model);
+        }else {
+            if($model->load(Yii::$app->request->post())){
+                Yii::$app->response->format = Response::FORMAT_JSON;
+
+                return Yii::$app->request->post();
+            }
         }
+
 
         return $this->renderAjax('cadastro', [
             'model' => $model,

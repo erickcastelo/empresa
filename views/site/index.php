@@ -6,6 +6,7 @@
 use app\assets\AppAsset;
 use yii\bootstrap\Modal;
 use yii\helpers\Html;
+use yii\web\JqueryAsset;
 use yii\widgets\ActiveForm;
 
 $this->title = 'My Yii Application';
@@ -84,7 +85,7 @@ AppAsset::register($this);
 
     <?php
     Modal::begin([
-        'header' => '<h2>Cadastrar Empresa</h2>',
+        'header' => '<h2 style="text-align: center">Cadastrar Empresa</h2>',
         'class' => 'modal',
         'size' => 'modal-lg'
     ]);
@@ -92,6 +93,11 @@ AppAsset::register($this);
     echo "<div id='modalContent'></div>";
 
     Modal::end();
+
+    $this->registerJsFile(
+        '@web/js/main.js',
+        ['depends' => JqueryAsset::className()]
+    );
     ?>
 
     <?php $this->endBody() ?>

@@ -23,8 +23,6 @@ class AppAsset extends AssetBundle
         'css/site.css',
     ];
     public $js = [
-        'js/main.js',
-        'js/cadastro.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',
